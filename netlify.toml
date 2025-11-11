@@ -1,0 +1,22 @@
+[build]
+  publish = "dist"
+  command = "npm install --legacy-peer-deps && npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Optimize for large files (ROM files)
+[[headers]]
+  for = "/roms/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"  # 1 week cache
+    
+[[headers]]
+  for = "/thumbnails/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"  # 1 month cache
