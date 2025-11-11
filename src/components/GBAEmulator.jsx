@@ -91,11 +91,18 @@ export default function GBAEmulator({ romPath, onError, onLoad }) {
 
   return (
     <div className="w-full h-full relative bg-slate-900 rounded">
-      <canvas 
+      <canvas
         ref={canvasRef}
+        tabIndex={0} // Make canvas focusable
         className="w-full h-full"
         style={{ imageRendering: 'pixelated' }}
       />
     </div>
   )
+// Auto-focus canvas when loaded
+useEffect(() => {
+  if (canvasRef.current) {
+    canvasRef.current.focus();
+  }
+}, []);
 }
