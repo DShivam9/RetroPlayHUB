@@ -22,20 +22,20 @@ class GBAEmulator {
       try {
         const head = document.head;
 
-        // Load CSS if not present
+        // Load CSS from CDN for better reliability
         if (!document.querySelector('link[data-emulatorjs]')) {
           const cssLink = document.createElement('link');
           cssLink.rel = 'stylesheet';
-          cssLink.href = '/RetroPlayHUB/data/emulator.min.css';
+          cssLink.href = 'https://cdn.emulatorjs.org/stable/data/emulator.min.css';
           cssLink.setAttribute('data-emulatorjs', '');
-          console.log('Loading EmulatorJS CSS from:', cssLink.href);
+          console.log('Loading EmulatorJS CSS from CDN:', cssLink.href);
           head.appendChild(cssLink);
         }
 
-        // Inject script
+        // Load script from CDN for better reliability
         const script = document.createElement('script');
-        script.src = '/RetroPlayHUB/data/emulator.min.js';
-        console.log('Loading EmulatorJS script from:', script.src);
+        script.src = 'https://cdn.emulatorjs.org/stable/data/emulator.min.js';
+        console.log('Loading EmulatorJS script from CDN:', script.src);
         script.async = true;
         script.setAttribute('data-emulatorjs', '');
         script.onload = () => {
@@ -89,8 +89,9 @@ class GBAEmulator {
       const blob = new Blob([arrayBuffer], { type: 'application/octet-stream' });
       const blobUrl = URL.createObjectURL(blob);
 
-      const dataPath = '/RetroPlayHUB/data/';
-      console.log('Instantiating EmulatorJS with dataPath:', dataPath);
+      // Use CDN for emulator cores for better stability
+      const dataPath = 'https://cdn.emulatorjs.org/stable/data/';
+      console.log('Instantiating EmulatorJS with CDN dataPath:', dataPath);
       this.emulatorInstance = new window.EmulatorJS('#game', {
         system: this.system,
         gameName: `${this.system.toUpperCase()} Game`,
@@ -98,7 +99,11 @@ class GBAEmulator {
         dataPath: dataPath,
         biosUrl: '',
         startOnLoad: true,
-        color: '#06b6d4'
+        color: '#06b6d4',
+        // Add additional options for better compatibility
+        cheats: false,
+        netplay: false,
+        debug: false
       });
 
       console.log('EmulatorJS instance created');
