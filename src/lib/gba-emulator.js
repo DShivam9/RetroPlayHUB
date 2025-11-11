@@ -1,6 +1,3 @@
-// Import the utility function
-import { getAssetPath } from './utils';
-
 // GBA Emulator using EmulatorJS (local)
 class GBAEmulator {
   constructor(canvas, system = 'gba') {
@@ -29,7 +26,7 @@ class GBAEmulator {
         if (!document.querySelector('link[data-emulatorjs]')) {
           const cssLink = document.createElement('link');
           cssLink.rel = 'stylesheet';
-          cssLink.href = getAssetPath('data/emulator.min.css');
+          cssLink.href = '/RetroPlayHUB/data/emulator.min.css';
           cssLink.setAttribute('data-emulatorjs', '');
           console.log('Loading EmulatorJS CSS from:', cssLink.href);
           head.appendChild(cssLink);
@@ -37,7 +34,7 @@ class GBAEmulator {
 
         // Inject script
         const script = document.createElement('script');
-        script.src = getAssetPath('data/emulator.min.js');
+        script.src = '/RetroPlayHUB/data/emulator.min.js';
         console.log('Loading EmulatorJS script from:', script.src);
         script.async = true;
         script.setAttribute('data-emulatorjs', '');
@@ -92,7 +89,7 @@ class GBAEmulator {
       const blob = new Blob([arrayBuffer], { type: 'application/octet-stream' });
       const blobUrl = URL.createObjectURL(blob);
 
-      const dataPath = getAssetPath('data/');
+      const dataPath = '/RetroPlayHUB/data/';
       console.log('Instantiating EmulatorJS with dataPath:', dataPath);
       this.emulatorInstance = new window.EmulatorJS('#game', {
         system: this.system,
