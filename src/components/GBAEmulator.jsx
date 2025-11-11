@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+
+import { useEffect, useRef, useState } from 'react';
 
 export default function GBAEmulator({ romPath, onError, onLoad }) {
-  const canvasRef = useRef(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const canvasRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Auto-focus canvas when loaded
   useEffect(() => {
@@ -21,50 +22,50 @@ export default function GBAEmulator({ romPath, onError, onLoad }) {
     };
     window.addEventListener("keydown", handleKeyDown, { passive: false });
 
-    if (!romPath || !canvasRef.current) return
+    if (!romPath || !canvasRef.current) return;
 
-    let mounted = true
+    let mounted = true;
 
     const initEmulator = async () => {
       try {
-        setLoading(true)
-        setError(null)
+        setLoading(true);
+        setError(null);
 
         // Fetch the ROM file
-        const response = await fetch(romPath)
+        const response = await fetch(romPath);
         if (!response.ok) {
-          throw new Error(`ROM file not found: ${romPath}`)
+          throw new Error(`ROM file not found: ${romPath}`);
         }
 
-  await response.arrayBuffer()
+        await response.arrayBuffer();
 
         // Initialize the emulator with iodine-gba
         // Note: This is a simplified implementation
         // Full implementation would require proper iodine-gba setup
-        
+
         if (mounted) {
-          setLoading(false)
-          onLoad?.()
+          setLoading(false);
+          onLoad?.();
         }
 
       } catch (err) {
-        console.error('Emulator error:', err)
+        console.error('Emulator error:', err);
         if (mounted) {
-          setError(err.message)
-          setLoading(false)
-          onError?.(err)
+          setError(err.message);
+          setLoading(false);
+          onError?.(err);
         }
       }
-    }
+    };
 
-    initEmulator()
+    initEmulator();
 
     return () => {
-      mounted = false
+      mounted = false;
       window.removeEventListener("keydown", handleKeyDown);
       // Cleanup emulator if needed
-    }
-  }, [romPath, onError, onLoad])
+    };
+  }, [romPath, onError, onLoad]);
 
   if (error) {
     return (
@@ -77,7 +78,7 @@ export default function GBAEmulator({ romPath, onError, onLoad }) {
           </p>
         </div>
       </div>
-    )
+    );
   }
 
   if (loading) {
@@ -93,7 +94,7 @@ export default function GBAEmulator({ romPath, onError, onLoad }) {
           <p className="text-gray-500 font-mono text-xs mt-2">{romPath}</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -105,6 +106,5 @@ export default function GBAEmulator({ romPath, onError, onLoad }) {
         style={{ imageRendering: 'pixelated' }}
       />
     </div>
-  )
-}
+  );
 }
