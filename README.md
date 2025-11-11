@@ -15,67 +15,30 @@ A modern web-based retro gaming platform that brings classic games to your brows
 
 Check out the live RetroPlay Hub here: [Your Website Link](https://your-website-link.com)
 
-## Tech Stack 🛠️
+## Technologies Used 🚀
 
-- **Frontend**: React 18 + Vite
-- **Styling**: Tailwind CSS
-- **Emulation**: RetroArch WebAssembly cores
-- **Build Tool**: Vite with HMR
+- **React 18**: Modern component-based UI library
+- **Vite**: Lightning-fast build tool with HMR
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **RetroArch WebAssembly Cores**: High-performance emulation in the browser
+- **JavaScript (ES6+)**: Modern language features and async programming
+- **HTML5 Canvas**: Pixel-perfect game rendering
+- **Service Workers**: Offline support and caching
+- **Responsive Design**: Mobile-first, cross-device compatibility
+- **Git & GitHub**: Version control and collaboration
+- **Netlify**: Cloud deployment and CI/CD
 
-## Installation 🚀
+## Resume Highlights 💼
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/DShivam9/RetroPlayHUB.git
-   cd RetroPlayHUB
-   ```
+- Built a full-stack web retro gaming platform from scratch
+- Integrated multiple emulation cores using WebAssembly
+- Implemented gamepad/controller support for browser games
+- Designed a modern, responsive UI with Tailwind CSS
+- Automated deployment with Netlify and GitHub Actions
+- Experience with asset management, large file handling (Git LFS)
+- Focused on accessibility and cross-browser compatibility
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Add ROM files** (See ROM Setup section below)
-
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-## ROM Setup 📁
-
-**Important**: ROM files are not included in this repository due to copyright restrictions and file size limitations.
-
-### Adding Your Own ROMs
-
-1. Create the ROM directory structure:
-   ```
-   public/roms/
-   ```
-
-2. Add your legally obtained ROM files to the appropriate folders:
-   ```
-   public/roms/
-   ├── game1.gba
-   ├── game2.nes
-   ├── game3.snes
-   └── ...
-   ```
-
-3. Add corresponding thumbnail images:
-   ```
-   public/thumbnails/
-   ├── game1.jpg
-   ├── game2.jpg
-   └── ...
-   ```
-
-### Supported File Formats
+## Supported File Formats
 
 - **Game Boy Advance**: .gba
 - **Nintendo Entertainment System**: .nes
@@ -84,28 +47,6 @@ Check out the live RetroPlay Hub here: [Your Website Link](https://your-website-
 - **PlayStation**: .bin/.cue, .iso
 - **Nintendo DS**: .nds
 - **And many more!**
-
-### Legal Notice ⚖️
-
-- Only use ROM files that you legally own
-- This project is for educational and preservation purposes
-- Respect copyright laws in your jurisdiction
-
-## Project Structure 📂
-
-```
-RetroPlayHUB/
-├── public/
-│   ├── data/           # Emulator cores and configurations
-│   ├── roms/           # Game ROM files (not included)
-│   └── thumbnails/     # Game thumbnail images
-├── src/
-│   ├── components/     # React components
-│   ├── pages/          # Page components
-│   ├── lib/            # Utility libraries
-│   └── assets/         # Static assets
-└── ...
-```
 
 ## Contributing 🤝
 
